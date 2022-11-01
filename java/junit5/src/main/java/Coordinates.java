@@ -20,46 +20,63 @@ public class Coordinates {
     }
 
     public void forward(
-        DirectionEnum direction,
-        int maxX,
-        int maxY
+        Vehicle vehicle
     ) {
-        switch (direction) {
+        switch (vehicle.getDirection()) {
             case EST -> x = x + 1;
             case WEST -> x = x - 1;
             case SOUTH -> y = y + 1;
             case NORTH -> y = y - 1;
         }
 
-        cleanValues(maxX, maxY);
+        cleanValues(vehicle.getPlanet());
     }
 
     public void backward(
-        DirectionEnum direction,
-        int maxX,
-        int maxY
+        Vehicle vehicle
     ) {
-        switch (direction) {
+        switch (vehicle.getDirection()) {
             case EST -> x = x - 1;
             case WEST -> x = x + 1;
             case SOUTH -> y = y - 1;
             case NORTH -> y = y + 1;
         }
 
-        cleanValues(maxX, maxY);
+        cleanValues(vehicle.getPlanet());
+    }
+
+    public void left(
+        Vehicle vehicle
+    ) {
+        switch (vehicle.getDirection()) {
+            case EST -> vehicle.setDirection(DirectionEnum.NORTH);
+            case WEST -> vehicle.setDirection(DirectionEnum.SOUTH);
+            case SOUTH -> vehicle.setDirection(DirectionEnum.EST);
+            case NORTH -> vehicle.setDirection(DirectionEnum.WEST);
+        }
+    }
+
+    public void right(
+        Vehicle vehicle
+    ) {
+        switch (vehicle.getDirection()) {
+            case EST -> vehicle.setDirection(DirectionEnum.SOUTH);
+            case WEST -> vehicle.setDirection(DirectionEnum.NORTH);
+            case SOUTH -> vehicle.setDirection(DirectionEnum.WEST);
+            case NORTH -> vehicle.setDirection(DirectionEnum.EST);
+        }
     }
 
     private void cleanValues(
-        int maxX,
-        int maxY
+        Planet planet
     ) {
         if (x <= 0) {
-            x = maxX;
-        } else if (x > maxX) {
+            x = planet.getMaxX();
+        } else if (x > planet.getMaxX()) {
             x = 1;
         } else if (y <= 0) {
-            y = maxY;
-        } else if (y > maxY) {
+            y = planet.getMaxY();
+        } else if (y > planet.getMaxY()) {
             y = 1;
         }
     }

@@ -30,8 +30,16 @@ public class Vehicle {
         return direction;
     }
 
+    public void setDirection(DirectionEnum direction) {
+        this.direction = direction;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public Planet getPlanet() {
+        return planet;
     }
 
     public boolean executeCommand(Character[] commands) {
@@ -41,17 +49,27 @@ public class Vehicle {
             switch (command) {
                 case FORWARD -> executeCommandForward();
                 case BACKWARD -> executeCommandBackward();
+                case LEFT -> executeCommandLeft();
+                case RIGHT -> executeCommandRight();
             }
         });
         return true;
     }
 
     private void executeCommandForward() {
-        this.position.forward(direction, planet.getMaxX(), planet.getMaxY());
+        this.position.forward(this);
     }
 
     private void executeCommandBackward() {
-        this.position.backward(direction, planet.getMaxX(), planet.getMaxY());
+        this.position.backward(this);
+    }
+
+    private void executeCommandRight() {
+        this.position.right(this);
+    }
+
+    private void executeCommandLeft() {
+        this.position.left(this);
     }
 
     @Override
