@@ -26,4 +26,13 @@ public class Planet {
     public int getMaxY() {
         return maxY;
     }
+
+    @Override
+    public String toString() {
+        return "Planet{" +
+               "name='" + name + '\'' +
+               ", maxX=" + maxX +
+               ", maxY=" + maxY +
+               '}';
+    }
 }

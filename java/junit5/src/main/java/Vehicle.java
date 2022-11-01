@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Vehicle {
 
     private String name;
@@ -30,5 +32,19 @@ public class Vehicle {
 
     public String getName() {
         return name;
+    }
+
+    public boolean executeCommand(Character[] commands) {
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+               "name='" + name + '\'' +
+               ", position=" + position +
+               ", direction=" + direction +
+               ", planet=" + planet +
+               '}';
     }
 }
