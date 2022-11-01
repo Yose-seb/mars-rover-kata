@@ -37,4 +37,26 @@ public class Requirement_4_Test extends AbstractTest {
             .isEqualTo(new Coordinates(ROVER_INIT_POSITION_X, ROVER_INIT_POSITION_Y));
     }
 
+    @Test
+    void req4_checkArrayCommands_rrrr() {
+        Character[] commands = new Character[] {'r', 'r', 'r', 'r'};
+        this.rover.executeCommand(commands);
+
+        assertThat(this.rover.getDirection())
+            .isEqualTo(ROVER_INIT_DIRECTION_ENUM);
+        assertThat(this.rover.getPosition())
+            .isEqualTo(new Coordinates(ROVER_INIT_POSITION_X, ROVER_INIT_POSITION_Y));
+    }
+
+    @Test
+    void req4_checkArrayCommands_llll() {
+        Character[] commands = new Character[] {'l', 'l', 'l', 'l'};
+        this.rover.executeCommand(commands);
+
+        assertThat(this.rover.getDirection())
+            .isEqualTo(ROVER_INIT_DIRECTION_ENUM);
+        assertThat(this.rover.getPosition())
+            .isEqualTo(new Coordinates(ROVER_INIT_POSITION_X, ROVER_INIT_POSITION_Y));
+    }
+
 }

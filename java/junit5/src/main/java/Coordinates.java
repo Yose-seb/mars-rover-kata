@@ -28,8 +28,6 @@ public class Coordinates {
             case SOUTH -> y = y + 1;
             case NORTH -> y = y - 1;
         }
-
-        cleanValues(vehicle.getPlanet());
     }
 
     public void backward(
@@ -41,8 +39,6 @@ public class Coordinates {
             case SOUTH -> y = y - 1;
             case NORTH -> y = y + 1;
         }
-
-        cleanValues(vehicle.getPlanet());
     }
 
     public void left(
@@ -64,20 +60,6 @@ public class Coordinates {
             case WEST -> vehicle.setDirection(DirectionEnum.NORTH);
             case SOUTH -> vehicle.setDirection(DirectionEnum.WEST);
             case NORTH -> vehicle.setDirection(DirectionEnum.EST);
-        }
-    }
-
-    private void cleanValues(
-        Planet planet
-    ) {
-        if (x <= 0) {
-            x = planet.getMaxX();
-        } else if (x > planet.getMaxX()) {
-            x = 1;
-        } else if (y <= 0) {
-            y = planet.getMaxY();
-        } else if (y > planet.getMaxY()) {
-            y = 1;
         }
     }
 
