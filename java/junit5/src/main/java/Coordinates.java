@@ -21,28 +21,46 @@ public class Coordinates {
 
     public void forward(
         Vehicle vehicle
-    ) {
+    )
+        throws ObstacleEncounteredException {
+
+        Coordinates newCoordinates = null;
+
         switch (vehicle.getDirection()) {
-            case EST -> x = x + 1;
-            case WEST -> x = x - 1;
-            case SOUTH -> y = y + 1;
-            case NORTH -> y = y - 1;
+            case EST -> newCoordinates = new Coordinates(x + 1, y);
+            case WEST -> newCoordinates = new Coordinates(x - 1, y);
+            case SOUTH -> newCoordinates = new Coordinates(x, y + 1);
+            case NORTH -> newCoordinates = new Coordinates(x, y - 1);
         }
 
-        cleanValues(vehicle.getPlanet());
+        newCoordinates.adaptCoordinatesToPlanet(vehicle.getPlanet());
+
+        vehicle.getPlanet().checkIfCoordinatesIsAvailable(newCoordinates);
+
+        x = newCoordinates.x;
+        y = newCoordinates.y;
     }
 
     public void backward(
         Vehicle vehicle
-    ) {
+    )
+        throws ObstacleEncounteredException {
+
+        Coordinates newCoordinates = null;
+
         switch (vehicle.getDirection()) {
-            case EST -> x = x - 1;
-            case WEST -> x = x + 1;
-            case SOUTH -> y = y - 1;
-            case NORTH -> y = y + 1;
+            case EST -> newCoordinates = new Coordinates(x - 1, y);
+            case WEST -> newCoordinates = new Coordinates(x + 1, y);
+            case SOUTH -> newCoordinates = new Coordinates(x, y - 1);
+            case NORTH -> newCoordinates = new Coordinates(x, y + 1);
         }
 
-        cleanValues(vehicle.getPlanet());
+        newCoordinates.adaptCoordinatesToPlanet(vehicle.getPlanet());
+
+        vehicle.getPlanet().checkIfCoordinatesIsAvailable(newCoordinates);
+
+        x = newCoordinates.x;
+        y = newCoordinates.y;
     }
 
     public void left(
@@ -67,7 +85,7 @@ public class Coordinates {
         }
     }
 
-    private void cleanValues(
+    private void adaptCoordinatesToPlanet(
         Planet planet
     ) {
         if (x <= 0) {

@@ -5,7 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class Requirement_5_Test extends AbstractTest {
 
     @Test
-    void req5_checkArrayCommands_fff() {
+    void req5_checkPlanetEdge_1()
+        throws ObstacleEncounteredException {
         Character[] commands = new Character[] {'f', 'f', 'f'};
         this.rover.executeCommand(commands);
 
@@ -14,7 +15,8 @@ public class Requirement_5_Test extends AbstractTest {
     }
 
     @Test
-    void req5_checkArrayCommands_bbb() {
+    void req5_checkPlanetEdge_2()
+        throws ObstacleEncounteredException {
         Character[] commands = new Character[] {'b', 'b', 'b'};
         this.rover.executeCommand(commands);
 

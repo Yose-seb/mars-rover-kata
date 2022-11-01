@@ -1,31 +1,43 @@
 import org.junit.jupiter.api.BeforeEach;
 
+import java.util.HashSet;
+
 public abstract class AbstractTest {
 
-    protected final static String PLANET_NAME = "March";
+    protected final String PLANET_NAME = "March";
 
-    protected final static int PLANET_MAX_X = 4;
+    protected final int PLANET_MAX_X = 4;
 
-    protected final static int PLANET_MAX_Y = 4;
+    protected final int PLANET_MAX_Y = 4;
 
-    protected final static int ROVER_INIT_POSITION_X = 2;
+    protected final int ROVER_INIT_POSITION_X = 2;
 
-    protected final static int ROVER_INIT_POSITION_Y = 3;
+    protected final int ROVER_INIT_POSITION_Y = 3;
 
-    protected final static String ROVER_NAME = "Rover";
+    protected final String ROVER_NAME = "Rover";
 
-    protected final static DirectionEnum ROVER_INIT_DIRECTION_ENUM = DirectionEnum.EST;
+    protected final DirectionEnum ROVER_INIT_DIRECTION_ENUM = DirectionEnum.EST;
+
+    protected final Obstacle OBSTACLE_1 = new Obstacle(new Coordinates(2, 2));
+
+    protected final Obstacle OBSTACLE_2 = new Obstacle(new Coordinates(4, 4));
 
     protected Vehicle rover;
 
     protected Planet planet;
 
     @BeforeEach
-    void init() {
+    void init()
+        throws ObstacleEncounteredException {
+        var obstacles = new HashSet<Obstacle>();
+        obstacles.add(OBSTACLE_1);
+        obstacles.add(OBSTACLE_2);
+
         this.planet = new Planet(
             PLANET_NAME,
             PLANET_MAX_X,
-            PLANET_MAX_Y
+            PLANET_MAX_Y,
+            obstacles
         );
 
         this.rover = new Vehicle(

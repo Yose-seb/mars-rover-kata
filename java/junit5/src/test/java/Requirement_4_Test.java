@@ -5,7 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class Requirement_4_Test extends AbstractTest {
 
     @Test
-    void req4_checkArrayCommands_l() {
+    void req4_checkLeftCommand_1()
+        throws ObstacleEncounteredException {
         Character[] commands = new Character[] {'l'};
         this.rover.executeCommand(commands);
 
@@ -16,7 +17,8 @@ public class Requirement_4_Test extends AbstractTest {
     }
 
     @Test
-    void req4_checkArrayCommands_r() {
+    void req4_checkRightCommand_1()
+        throws ObstacleEncounteredException {
         Character[] commands = new Character[] {'r'};
         this.rover.executeCommand(commands);
 
@@ -27,7 +29,8 @@ public class Requirement_4_Test extends AbstractTest {
     }
 
     @Test
-    void req4_checkArrayCommands_lr() {
+    void req4_checkLeftRigntCommand_1()
+        throws ObstacleEncounteredException {
         Character[] commands = new Character[] {'l', 'r'};
         this.rover.executeCommand(commands);
 
@@ -38,7 +41,8 @@ public class Requirement_4_Test extends AbstractTest {
     }
 
     @Test
-    void req4_checkArrayCommands_rrrr() {
+    void req4_RoundInCircles_1()
+        throws ObstacleEncounteredException {
         Character[] commands = new Character[] {'r', 'r', 'r', 'r'};
         this.rover.executeCommand(commands);
 
@@ -49,7 +53,8 @@ public class Requirement_4_Test extends AbstractTest {
     }
 
     @Test
-    void req4_checkArrayCommands_llll() {
+    void req4_RoundInCircles_2()
+        throws ObstacleEncounteredException {
         Character[] commands = new Character[] {'l', 'l', 'l', 'l'};
         this.rover.executeCommand(commands);
 

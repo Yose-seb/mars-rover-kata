@@ -8,7 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class Requirement_3_Test extends AbstractTest {
 
     @Test
-    void req3_checkArrayCommands_f() {
+    void req3_checkCommand_forward()
+        throws ObstacleEncounteredException {
         Character[] commands = new Character[] {'f'};
         this.rover.executeCommand(commands);
 
@@ -17,7 +18,8 @@ public class Requirement_3_Test extends AbstractTest {
     }
 
     @Test
-    void req3_checkArrayCommands_b() {
+    void req3_checkCommand_backward()
+        throws ObstacleEncounteredException {
         Character[] commands = new Character[] {'b'};
         this.rover.executeCommand(commands);
 
@@ -26,7 +28,8 @@ public class Requirement_3_Test extends AbstractTest {
     }
 
     @Test
-    void req3_checkArrayCommands_fb() {
+    void req3_checkArrayCommands_forward_backward()
+        throws ObstacleEncounteredException {
         Character[] commands = new Character[] {'f', 'b'};
         this.rover.executeCommand(commands);
 
@@ -35,7 +38,7 @@ public class Requirement_3_Test extends AbstractTest {
     }
 
     @Test
-    void req3_checkArrayCommands_a_fail() {
+    void req3_checkCommand_fail() {
         Character[] commands = new Character[] {'a'};
         assertThrows(NoSuchElementException.class, () -> this.rover.executeCommand(commands));
     }

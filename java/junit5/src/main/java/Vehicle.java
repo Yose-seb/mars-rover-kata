@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Vehicle {
 
     private String name;
@@ -15,7 +13,12 @@ public class Vehicle {
         Coordinates position,
         DirectionEnum direction,
         Planet planet
-    ) {
+    )
+        throws ObstacleEncounteredException {
+
+        // Check
+        planet.checkIfCoordinatesIsAvailable(position);
+
         this.name = name;
         this.position = position;
         this.direction = direction;
@@ -42,8 +45,10 @@ public class Vehicle {
         return planet;
     }
 
-    public boolean executeCommand(Character[] commands) {
-        Arrays.asList(commands).forEach(c -> {
+    public boolean executeCommand(Character[] commands)
+        throws ObstacleEncounteredException {
+
+        for (var c : commands) {
             CommandEnum command = CommandEnum.getCommand(c);
 
             switch (command) {
@@ -52,15 +57,18 @@ public class Vehicle {
                 case LEFT -> executeCommandLeft();
                 case RIGHT -> executeCommandRight();
             }
-        });
+        }
+
         return true;
     }
 
-    private void executeCommandForward() {
+    private void executeCommandForward()
+        throws ObstacleEncounteredException {
         this.position.forward(this);
     }
 
-    private void executeCommandBackward() {
+    private void executeCommandBackward()
+        throws ObstacleEncounteredException {
         this.position.backward(this);
     }
 
