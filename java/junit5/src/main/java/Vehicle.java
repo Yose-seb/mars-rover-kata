@@ -35,7 +35,23 @@ public class Vehicle {
     }
 
     public boolean executeCommand(Character[] commands) {
+        Arrays.asList(commands).forEach(c -> {
+            CommandEnum command = CommandEnum.getCommand(c);
+
+            switch (command) {
+                case FORWARD -> executeCommandForward();
+                case BACKWARD -> executeCommandBackward();
+            }
+        });
         return true;
+    }
+
+    private void executeCommandForward() {
+        this.position.forward(direction, planet.getMaxX(), planet.getMaxY());
+    }
+
+    private void executeCommandBackward() {
+        this.position.backward(direction, planet.getMaxX(), planet.getMaxY());
     }
 
     @Override
