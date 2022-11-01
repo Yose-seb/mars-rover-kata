@@ -1,4 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public abstract class AbstractTest {
 
@@ -34,5 +37,11 @@ public abstract class AbstractTest {
             ROVER_INIT_DIRECTION_ENUM,
             planet
         );
+    }
+
+    @Test
+    void fail() {
+        assertThat("Test")
+            .isEqualTo("Fail");
     }
 }
