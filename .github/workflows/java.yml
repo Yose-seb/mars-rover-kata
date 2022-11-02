@@ -68,9 +68,6 @@ jobs:
           gradle-version: current
           arguments: test --warning-mode all
 
-      - name: assure one failing test
-        working-directory: java/junit5
-        run: "sh './gradlew test'"
       #### END junit5
 
 
